@@ -14,6 +14,28 @@
 | categories    | Zero-or-One          | products             |  One-or-Many         | One-to-Many  |
 | region        | One-and-Only-One     | territories          |  One-or-Many         | One-to-Many  |
 
+### Northwind OData Service
+
+| Query Description                                    | HTTP Verb | Url                                                              |
+| -----------------------------------------------------| --------- | ---------------------------------------------------------------- |
+| Get service metadata.                                | GET       | /$metadata                                                       |
+| Get all customers.                                   | GET       | /Customers                                                       |
+| Get a customer with "ALFKI" id.                      | GET       | /Customers('ALFKI')                                              |
+| Get all orders.                                      | GET       | /Orders                                                          |
+| Get an order with "10248" id.                        | GET       | /Orders(10248)                                                   |
+| Get all orders for a customer with "ANATR" id.       | GET       | /Customers('ANATR')/Orders                                       |
+| Get a customer for an order with "10248" id.         | GET       | /Orders(10248)/Customer                                          |
+|                                                      |           |                                                                  |
+| Get a customer CompanyName with "ALFKI" id.          | GET       | /Customers('ALFKI')/CompanyName/$value                           |
+| Get all customers from Germany.                      | GET       | /Customers?$filter=Country eq 'Germany'                          |
+| Get order details with "10308" id.                   | GET       | /Customers('ANATR')/Orders(10308)/Order_Details                  |
+| Get first 5 products.                                | GET       | /Products?$top=5                                                 |
+| Get all products with price between 18 and 20.       | GET       | /Products?$filter=UnitPrice le 20.0000 and UnitPrice gt 18.0000  |
+| Get product Chai.                                    | GET       | /Products?$filter=ProductName eq 'Chai'                          |
+| Sort products.                                       | GET       | /Products?$orderby=ProductName                                   |
+| Counting products.                                   | GET       | /Products/$count                                                 |
+| Select CompanyName and Country from Suppliers.       | GET       | /Suppliers?$select=CompanyName,Country                           |
+
 #### Утилизация потоков в асинхронной модели
 
 | Breakpoint | Thread ID   | Thread Managed ID | Thread Name   |
